@@ -13,6 +13,12 @@ class BlogController extends Controller
         return response()->json($blogs);
     }
 
+    public function showBySlug($slug)
+    {
+        $blog = Blog::published()->with('images')->where('slug', $slug)->firstOrFail();
+        return response()->json($blog);
+    }
+
     public function show($id)
     {
         $blog = Blog::published()->with('images')->findOrFail($id);

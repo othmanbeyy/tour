@@ -31,6 +31,9 @@ class BlogManagementController extends Controller
                 'tags' => 'nullable|string',
                 'duration' => 'nullable|string|max:100',
                 'status' => 'in:draft,published',
+                'seo_meta_title' => 'nullable|string|max:255',
+                'seo_meta_description' => 'nullable|string|max:500',
+                'focus_keyword' => 'nullable|string|max:255',
                 'images' => 'sometimes|array',
                 'images.*' => 'file|mimes:jpeg,png,jpg,gif,svg,webp,heic|max:20480',
             ]);
@@ -90,6 +93,9 @@ class BlogManagementController extends Controller
                 'tags' => 'nullable|string',
                 'duration' => 'nullable|string|max:100',
                 'status' => 'in:draft,published',
+                'seo_meta_title' => 'nullable|string|max:255',
+                'seo_meta_description' => 'nullable|string|max:500',
+                'focus_keyword' => 'nullable|string|max:255',
                 'images' => 'sometimes|array',
                 'images.*' => 'file|mimes:jpeg,png,jpg,gif,svg,webp,heic|max:20480',
             ]);

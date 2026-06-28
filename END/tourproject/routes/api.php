@@ -19,12 +19,14 @@ use App\Http\Controllers\Admin\ReviewManagementController;
 
 // ─── Public Routes ──────────────────────────────────────────────────
 Route::get('/tours', [TourController::class, 'index']);
+Route::get('/tours/slug/{slug}', [TourController::class, 'showBySlug']);
 Route::get('/tours/{id}', [TourController::class, 'show']);
 
 Route::get('/safaris', [SafariController::class, 'index']);
 Route::get('/safaris/{id}', [SafariController::class, 'show']);
 
 Route::get('/blogs', [BlogController::class, 'index']);
+Route::get('/blogs/slug/{slug}', [BlogController::class, 'showBySlug']);
 Route::get('/blogs/{id}', [BlogController::class, 'show']);
 
 Route::post('/contact', [ContactController::class, 'store']);

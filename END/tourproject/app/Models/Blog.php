@@ -18,6 +18,9 @@ class Blog extends Model
         'duration',
         'status',
         'author_id',
+        'seo_meta_title',
+        'seo_meta_description',
+        'focus_keyword',
     ];
 
     protected $casts = [

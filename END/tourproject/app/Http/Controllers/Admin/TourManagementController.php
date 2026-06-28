@@ -7,6 +7,7 @@ use App\Models\Tour;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 use App\Traits\OptimizesImages;
 
 class TourManagementController extends Controller
@@ -28,9 +29,14 @@ class TourManagementController extends Controller
                 'itinerary' => 'required|string',
                 'included' => 'nullable|string',
                 'excluded' => 'nullable|string',
+                'seo_meta_title' => 'nullable|string|max:255',
+                'seo_meta_description' => 'nullable|string|max:500',
+                'focus_keyword' => 'nullable|string|max:255',
                 'images' => 'sometimes|array',
                 'images.*' => 'file|mimes:jpeg,png,jpg,gif,svg,webp,heic|max:20480',
             ]);
+
+            $validated['slug'] = Str::slug($validated['title']);
 
             $tour = DB::transaction(function () use ($validated, $request) {
                 $tour = Tour::create(collect($validated)->except('images')->all());
@@ -78,6 +84,9 @@ class TourManagementController extends Controller
                 'itinerary' => 'sometimes|string',
                 'included' => 'nullable|string',
                 'excluded' => 'nullable|string',
+                'seo_meta_title' => 'nullable|string|max:255',
+                'seo_meta_description' => 'nullable|string|max:500',
+                'focus_keyword' => 'nullable|string|max:255',
                 'images' => 'sometimes|array',
                 'images.*' => 'file|mimes:jpeg,png,jpg,gif,svg,webp,heic|max:20480',
             ]);
