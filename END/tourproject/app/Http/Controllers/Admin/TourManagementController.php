@@ -26,6 +26,8 @@ class TourManagementController extends Controller
                 'price' => 'required|numeric',
                 'duration' => 'required|string|max:255',
                 'itinerary' => 'required|string',
+                'included' => 'nullable|string',
+                'excluded' => 'nullable|string',
                 'images' => 'sometimes|array',
                 'images.*' => 'file|mimes:jpeg,png,jpg,gif,svg,webp,heic|max:20480',
             ]);
@@ -74,6 +76,8 @@ class TourManagementController extends Controller
                 'price' => 'sometimes|numeric',
                 'duration' => 'sometimes|string|max:255',
                 'itinerary' => 'sometimes|string',
+                'included' => 'nullable|string',
+                'excluded' => 'nullable|string',
                 'images' => 'sometimes|array',
                 'images.*' => 'file|mimes:jpeg,png,jpg,gif,svg,webp,heic|max:20480',
             ]);

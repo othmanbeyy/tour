@@ -14,6 +14,8 @@ use App\Http\Controllers\Admin\SafariManagementController;
 use App\Http\Controllers\Admin\BlogManagementController;
 use App\Http\Controllers\Admin\BookingManagementController;
 use App\Http\Controllers\AnalyticsController;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\Admin\ReviewManagementController;
 
 // ─── Public Routes ──────────────────────────────────────────────────
 Route::get('/tours', [TourController::class, 'index']);
@@ -28,6 +30,8 @@ Route::get('/blogs/{id}', [BlogController::class, 'show']);
 Route::post('/contact', [ContactController::class, 'store']);
 Route::post('/booking', [BookingController::class, 'store']);
 Route::post('/analytics/visit', [AnalyticsController::class, 'store']);
+Route::post('/reviews', [ReviewController::class, 'store']);
+Route::get('/reviews', [ReviewController::class, 'index']);
 
 // Friendly GET responses for POST-only endpoints
 Route::get('/contact', fn() => response()->json(['message' => 'Contact submissions require POST requests to /api/contact.'], 200));
@@ -55,4 +59,7 @@ Route::prefix('admin')->middleware(['admin.api'])->group(function () {
 
     // Analytics
     Route::get('/analytics', [AnalyticsController::class, 'index']);
+
+    // Reviews Management
+    Route::apiResource('reviews', ReviewManagementController::class)->only(['index', 'show', 'update', 'destroy']);
 });

@@ -28,7 +28,7 @@ class BookingManagementController extends Controller
         $booking = Booking::findOrFail($id);
 
         $validated = $request->validate([
-            'status' => 'required|in:pending,confirmed,cancelled,completed',
+            'status' => 'required|in:pending,confirmed,cancelled,completed,rejected',
         ]);
 
         $booking->update($validated);

@@ -21,6 +21,8 @@ class BookingController extends Controller
             'country' => 'nullable|string|max:255',
             'special_requests' => 'nullable|string',
             'number_of_tourists' => 'required|integer|min:1',
+            'children_count' => 'nullable|integer|min:0',
+            'booking_date' => 'nullable|date',
         ]);
 
         if (!$request->tour_id && !$request->safari_id) {
@@ -49,7 +51,15 @@ class BookingController extends Controller
             $message .= "Safari: {$safari->title}\n";
         }
 
-        $message .= "Number of Tourists: {$booking->number_of_tourists}\n";
+        $message .= "Number of Travelers: {$booking->number_of_tourists}\n";
+        
+        if (!empty($booking->children_count)) {
+            $message .= "Number of Children: {$booking->children_count}\n";
+        }
+        
+        if (!empty($booking->booking_date)) {
+            $message .= "Booking Date: {$booking->booking_date}\n";
+        }
         
         if (!empty($booking->special_requests)) {
             $message .= "\nSpecial Requests:\n{$booking->special_requests}\n";

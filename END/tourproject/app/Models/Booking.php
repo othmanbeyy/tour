@@ -10,11 +10,12 @@ class Booking extends Model
     protected $fillable = [
         'tour_id', 'safari_id', 'first_name', 'last_name', 
         'email', 'phone', 'country', 'special_requests', 
-        'number_of_tourists', 'status'
+        'number_of_tourists', 'children_count', 'booking_date', 'status'
     ];
 
     protected $attributes = [
         'status' => 'pending',
+        'children_count' => 0,
     ];
 
     public function tour()

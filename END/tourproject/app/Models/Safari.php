@@ -8,7 +8,7 @@ class Safari extends Model
 {
     protected $fillable = [
         'title', 'highlights', 'description', 'price', 
-        'duration', 'included', 'itinerary'
+        'duration', 'included', 'excluded', 'itinerary'
     ];
 
     public function images()
@@ -19,6 +19,11 @@ class Safari extends Model
     public function bookings()
     {
         return $this->hasMany(Booking::class);
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
     }
 
     protected static function boot()

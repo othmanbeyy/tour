@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Tour extends Model
 {
     protected $fillable = [
-        'title', 'description', 'price', 'duration', 'itinerary'
+        'title', 'description', 'price', 'duration', 'itinerary', 'included', 'excluded'
     ];
 
     public function images()
@@ -18,6 +18,11 @@ class Tour extends Model
     public function bookings()
     {
         return $this->hasMany(Booking::class);
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
     }
 
     protected static function boot()
